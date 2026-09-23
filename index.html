@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en" data-no-contact-orb>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shubham Gupta — Creative Lead & AI Visual Artist</title>
+  <meta name="description" content="Shubham Gupta — Creative Lead & AI Visual Artist in Bengaluru. 7+ years directing animation, live-action and AI-generated content, plus self-built data products like the AI Video Model Price Index.">
+  <meta property="og:title" content="Shubham Gupta — Creative Lead & AI Visual Artist">
+  <meta property="og:description" content="AI micro-dramas with 10M+ views, an award-winning 2D short, and a pricing index for AI video models.">
+  <meta property="og:image" content="https://shubham180395.github.io/shubham-gupta-portfolio/assets/shubham-portrait.jpg">
+  <meta property="og:url" content="https://shubham180395.github.io/shubham-gupta-portfolio/">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://shubham180395.github.io/shubham-gupta-portfolio/">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#07070a">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2307070a'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' dominant-baseline='middle' font-family='Arial Black,Arial' font-weight='900' font-size='28' fill='%23b9a4ff'%3ESG%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400..800&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script type="importmap">
+    { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" } }
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <!-- ambient colour: soft drifting shades under everything -->
+  <div class="ambient" aria-hidden="true"><i class="a1"></i><i class="a2"></i><i class="a3"></i></div>
+
+  <!-- fixed WebGL stage: orb + particle field -->
+  <canvas id="gl" aria-hidden="true"></canvas>
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- custom cursor (fine pointers only) -->
+  <div class="cursor-lens" aria-hidden="true"></div>
+  <div class="cursor" aria-hidden="true"><span class="cursor-trail"></span><span class="cursor-label"></span></div>
+
+  <!-- NAV -->
+  <nav class="nav" aria-label="Primary">
+    <a class="logo" href="#hero" aria-label="Shubham Gupta — home">SG<span>.</span></a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#work">Work</a>
+      <a href="#lab">Lab</a>
+      <a href="#awards">Awards</a>
+      <a href="#skills">Skills</a>
+    </div>
+    <a class="nav-cta magnetic" href="#contact">Let's talk</a>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
+  </nav>
+  <div class="mobile-menu" hidden>
+    <a href="#about">About</a><a href="#work">Work</a><a href="#lab">Lab</a><a href="#awards">Awards</a><a href="#skills">Skills</a><a href="#contact">Contact</a>
+  </div>
+
+  <main id="main">
+
+    <!-- HERO -->
+    <header class="hero" id="hero">
+      <div class="hero-inner">
+        <a class="avail" href="#contact">
+          <img src="assets/shubham-avatar.jpg" alt="" width="28" height="28">
+          <span class="pulse" aria-hidden="true"></span>
+          Open to new projects · 2026
+        </a>
+        <h1 class="hero-title" aria-label="Creative Lead and AI Visual Artist">
+          <span class="line" aria-hidden="true"><span class="split">Creative</span> <span class="nw"><span class="split">Lead</span> <span class="amp">&amp;</span></span></span>
+          <span class="line line-accent" aria-hidden="true"><span class="split" id="roleWord">AI Visual Artist</span></span>
+        </h1>
+        <p class="hero-sub">7+ years directing visual production across animation, live-action and AI-generated content — cutting turnaround by 30–40% on work that reaches millions.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary magnetic" href="#work" data-cursor="View">View my work <span aria-hidden="true">↓</span></a>
+          <a class="btn btn-ghost magnetic" href="#contact">Let's collaborate</a>
+        </div>
+      </div>
+
+      <div class="hud" aria-hidden="true">
+        <div class="hud-chip" data-depth="18" style="--x:70%;--y:17%"><b>7+</b><span>years</span></div>
+        <div class="hud-chip" data-depth="34" style="--x:89%;--y:42%"><b>10M+</b><span>views</span></div>
+        <div class="hud-chip" data-depth="26" style="--x:73%;--y:79%"><b>20+</b><span>intl. awards</span></div>
+      </div>
+
+      <button class="hero-hint" id="remix" type="button">
+        <span class="hint-key">Drag</span> the orb · <span class="hint-key">Click</span> to remix the palette
+      </button>
+      <div class="scroll-cue" aria-hidden="true"><span></span>Scroll</div>
+    </header>
+
+    <!-- MARQUEE -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Creative Direction</span><i>✦</i><span>AI Production</span><i>✦</i><span>Visual Storytelling</span><i>✦</i><span>Character Consistency</span><i>✦</i><span>Storyboarding</span><i>✦</i><span>2D Animation</span><i>✦</i><span>Seedance · Veo · Midjourney</span><i>✦</i>
+        <span>Creative Direction</span><i>✦</i><span>AI Production</span><i>✦</i><span>Visual Storytelling</span><i>✦</i><span>Character Consistency</span><i>✦</i><span>Storyboarding</span><i>✦</i><span>2D Animation</span><i>✦</i><span>Seedance · Veo · Midjourney</span><i>✦</i>
+      </div>
+    </div>
+
+    <!-- ABOUT -->
+    <section class="section about" id="about">
+      <div class="about-grid">
+        <div class="portrait-wrap reveal">
+          <figure class="portrait tilt" data-tilt="10">
+            <img src="assets/shubham-portrait.jpg" alt="Portrait of Shubham Gupta in a navy suit, smiling" width="1012" height="1200" loading="lazy">
+            <span class="glare" aria-hidden="true"></span>
+            <figcaption class="portrait-tag" data-z="60">
+              <b>Shubham Gupta</b>
+              <span>Creative Lead · AI Visual Artist</span>
+            </figcaption>
+            <span class="portrait-badge" data-z="90">📍 Bengaluru, India</span>
+          </figure>
+        </div>
+        <div class="about-copy">
+          <p class="eyebrow reveal"><span>01</span> About</p>
+          <h2 class="h2 reveal">AI-native creative lead who builds <em>systems</em>, not just shots.</h2>
+          <p class="lead reveal">I'm Shubham — a Creative Lead with a Master of Fine Arts and 7+ years directing visual production pipelines across animation, live-action and AI-generated content.</p>
+          <p class="reveal">From children's entertainment at Videogyan to AI micro-dramas at Dashversh.ai reaching global audiences, I build creative systems that are both high-quality and high-output. I led 2D animation on <em>Off Camera</em> — a short film that won 20+ international awards. Lately I've been building my own tools too, like a pricing index for the AI video models I use every day.</p>
+          <dl class="stats reveal">
+            <div><dt>Years of experience</dt><dd><span data-count="7">0</span>+</dd></div>
+            <div><dt>Combined content views</dt><dd><span data-count="10">0</span>M+</dd></div>
+            <div><dt>Video productions led</dt><dd><span data-count="100">0</span>+</dd></div>
+            <div><dt>Stakeholder approval</dt><dd><span data-count="95">0</span>%</dd></div>
+          </dl>
+        </div>
+      </div>
+
+      <ol class="timeline" aria-label="Experience">
+        <li class="job reveal">
+          <span class="job-when">Nov 2025 — Present</span>
+          <div class="job-main">
+            <h3>Art Lead — Creative Lead</h3>
+            <p class="job-org">Dashversh.ai · Bengaluru</p>
+          </div>
+          <p class="job-desc">Directing AI visual production for 20+ micro-drama shows with 4M+ views. Built scalable AI image workflows on Seedance, Veo, Seedream and Frameo.ai — cutting turnaround by 30–40%.</p>
+        </li>
+        <li class="job reveal">
+          <span class="job-when">Mar 2021 — Jul 2025</span>
+          <div class="job-main">
+            <h3>Creative Executive</h3>
+            <p class="job-org">Videogyan Animation Studios · Bengaluru</p>
+          </div>
+          <p class="job-desc">Spearheaded 100+ video productions, mentored 15+ junior artists and directed 50+ live-action shoots. Lead 2D animator on <em>Off Camera</em> — 20+ global accolades.</p>
+        </li>
+        <li class="job reveal">
+          <span class="job-when">Nov 2019 — Dec 2020</span>
+          <div class="job-main">
+            <h3>Toon Artist</h3>
+            <p class="job-org">India Today · Delhi</p>
+          </div>
+          <p class="job-desc">Designed 20+ backdrops and covers for a 28.9M-subscriber channel. Logo and identity redesigns lifted brand recognition by 40%.</p>
+        </li>
+        <li class="job reveal">
+          <span class="job-when">Dec 2018 — Oct 2019</span>
+          <div class="job-main">
+            <h3>Storyboard Artist</h3>
+            <p class="job-org">Crazy Cub Animation Studio · Delhi</p>
+          </div>
+          <p class="job-desc">Created storyboards and visual narratives for animation productions in a fast-paced studio pipeline.</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- WORK: AI DRAMAS (3D coverflow) -->
+    <section class="section work" id="work">
+      <div class="section-head">
+        <p class="eyebrow reveal"><span>02</span> Selected work</p>
+        <h2 class="h2 reveal">AI micro-dramas, <em>directed at scale.</em></h2>
+        <p class="section-note reveal">Five series from Dashversh.ai where I led the visual pipeline — character consistency, look development and 100+ production-ready assets per cycle. Drag, swipe or use the arrow keys.</p>
+      </div>
+
+      <div class="flow reveal" id="flow" tabindex="0" role="region" aria-roledescription="carousel" aria-label="AI drama series — use left and right arrow keys, Enter to watch" data-cursor="Drag">
+        <div class="flow-stage">
+          <a class="flow-card" href="https://dashreels.com/reel/SHOennSZcNzXCL6N6Z5" target="_blank" rel="noopener"
+             data-genre="English AI drama" data-title="The Price of Being Mrs. Grey" data-stat="🌍 Global audience"
+             data-desc="English-language micro-drama for global audiences — consistent characters, environments and story beats end to end.">
+            <img src="assets/mrs-grey.jpg" alt="The Price of Being Mrs. Grey poster" width="500" height="800" draggable="false">
+          </a>
+          <a class="flow-card" href="https://dashreels.com/reel/SHOT78oLjwHoC1xG98c" target="_blank" rel="noopener"
+             data-genre="Hindi emotional drama" data-title="Chitthi Aayi Hai" data-stat="🎬 AI visual production"
+             data-desc="AI-produced Hindi emotional drama. Held visual consistency and emotional tone across every episode.">
+            <img src="assets/chitthi-aayi-hai.jpg" alt="Chitthi Aayi Hai poster" width="500" height="800" draggable="false">
+          </a>
+          <a class="flow-card" href="https://dashreels.com/reel/SHO7rDYbOWwbwV4FbrT" target="_blank" rel="noopener"
+             data-genre="Hindi romantic drama" data-title="Amar Prem Katha" data-stat="🎥 Millions of views"
+             data-desc="Flagship Hindi romantic drama. Built the image pipeline on Seedance 2.0, Seedream and Frameo.ai — 100+ production-ready assets per cycle.">
+            <img src="assets/amar-prem-katha.jpg" alt="Amar Prem Katha poster" width="500" height="800" draggable="false">
+          </a>
+          <a class="flow-card" href="https://dashreels.com/reel/SHO2kYx2YqJrUIQES1W" target="_blank" rel="noopener"
+             data-genre="English AI drama" data-title="Don't Mess With The Billionaire Bloodlines" data-stat="🌍 Global audience"
+             data-desc="High-stakes English drama series. Directed visual production and kept characters locked across episodes.">
+            <img src="assets/billionaire-bloodlines.jpg" alt="Don't Mess With The Billionaire Bloodlines poster" width="500" height="800" draggable="false">
+          </a>
+          <a class="flow-card" href="https://dashreels.com/reel/SHOlEqVyfUiW3k4tHRB" target="_blank" rel="noopener"
+             data-genre="English AI drama" data-title="All's Fair in Love and Revenge" data-stat="🎬 AI visual production"
+             data-desc="Love, betrayal and vengeance — full visual art direction and production pipeline.">
+            <img src="assets/alls-fair.jpg" alt="All's Fair in Love and Revenge poster" width="500" height="800" draggable="false">
+          </a>
+        </div>
+      </div>
+
+      <div class="flow-info" aria-live="polite">
+        <button class="flow-btn" id="flowPrev" aria-label="Previous series">←</button>
+        <div class="flow-text">
+          <p class="flow-genre" id="flowGenre"></p>
+          <h3 class="flow-title" id="flowTitle"></h3>
+          <p class="flow-desc" id="flowDesc"></p>
+          <p class="flow-meta"><span id="flowStat"></span><a id="flowLink" href="#" target="_blank" rel="noopener" data-cursor="Watch">Watch now ↗</a></p>
+        </div>
+        <button class="flow-btn" id="flowNext" aria-label="Next series">→</button>
+      </div>
+      <div class="flow-dots" id="flowDots" aria-hidden="true"></div>
+
+      <div class="pair">
+        <a class="card tilt reveal" data-tilt="7" href="https://www.youtube.com/watch?v=YbN64-5TzZs&amp;t=1s" target="_blank" rel="noopener" data-cursor="Watch">
+          <div class="card-media">
+            <img src="assets/off-camera.jpg" alt="Off Camera short film title card with festival laurels" width="1000" height="563" loading="lazy">
+            <span class="play" aria-hidden="true">▶</span>
+          </div>
+          <span class="glare" aria-hidden="true"></span>
+          <div class="card-body" data-z="40">
+            <p class="card-kicker">2D animation · Short film</p>
+            <h3>Off Camera</h3>
+            <p>Lead 2D animator on an internationally acclaimed short — recognised at 20+ film festivals worldwide.</p>
+            <p class="card-foot"><span>🏆 20+ international awards</span><span class="card-link">Watch on YouTube ↗</span></p>
+          </div>
+        </a>
+        <a class="card tilt reveal" data-tilt="7" href="https://www.youtube.com/playlist?list=PLjVfga0fu_hv6pueiVmmxEarZ3MDPv4Ib" target="_blank" rel="noopener" data-cursor="Watch">
+          <div class="card-media">
+            <img src="assets/kids-series.jpg" alt="Jam Jammies children's series thumbnail" width="1000" height="563" loading="lazy">
+            <span class="play" aria-hidden="true">▶</span>
+          </div>
+          <span class="glare" aria-hidden="true"></span>
+          <div class="card-body" data-z="40">
+            <p class="card-kicker">Creative direction · Videogyan</p>
+            <h3>Children's Content Series</h3>
+            <p>Directed 50+ live-action shoots across three children's song series and mentored 15+ junior artists.</p>
+            <p class="card-foot"><span>🎬 50+ shoots directed</span><span class="card-link">View playlist ↗</span></p>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- LAB: PERSONAL PROJECT -->
+    <section class="section lab" id="lab">
+      <div class="section-head">
+        <p class="eyebrow reveal"><span>03</span> Lab · Personal project</p>
+        <h2 class="h2 reveal">I build tools, too.</h2>
+      </div>
+
+      <article class="feature">
+        <div class="feature-visual reveal">
+          <div class="shot-tabs" role="group" aria-label="Choose a screen">
+            <button type="button" aria-pressed="true" data-shot="0">Price Index</button>
+            <button type="button" aria-pressed="false" data-shot="1">Budget Planner</button>
+            <button type="button" aria-pressed="false" data-shot="2">Heatmap</button>
+          </div>
+          <a class="stack" id="stack" href="https://claude.ai/artifact/QiMfQdviSmTvzVVRqvughh" target="_blank" rel="noopener" data-cursor="Open" aria-label="Open the AI Video Model Price Index live app">
+            <div class="stack-inner">
+              <figure class="shot" data-i="0"><div class="shot-bar"><i></i><i></i><i></i><span>ai-video-price-index</span></div><img src="assets/price-index-index.jpg" alt="Price Index view ranking storefronts for Kling from $0.028 to $0.35 per second" width="1400" height="875" loading="lazy"></figure>
+              <figure class="shot" data-i="1"><div class="shot-bar"><i></i><i></i><i></i><span>budget-planner</span></div><img src="assets/price-index-planner.jpg" alt="Project Budget Planner view with duration, timeline and currency controls" width="1400" height="875" loading="lazy"></figure>
+              <figure class="shot" data-i="2"><div class="shot-bar"><i></i><i></i><i></i><span>full-grid</span></div><img src="assets/price-index-grid.jpg" alt="Full grid heatmap of every storefront against every model" width="1400" height="875" loading="lazy"></figure>
+              <span class="float-chip c1">14× price spread</span>
+              <span class="float-chip c2">18 storefronts</span>
+              <span class="float-chip c3">0 dependencies</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="feature-copy">
+          <p class="kicker reveal">Data product · Design &amp; build · 2026</p>
+          <h3 class="feature-title reveal">AI Video Model <em>Price Index</em> &amp; Budget Planner</h3>
+          <p class="lead reveal">A self-serve pricing intelligence tool that turns inconsistent, credit-based AI video pricing into one comparable <b>$/second</b> index across 18 storefronts — plus a subscription-aware planner for scoping real projects.</p>
+
+          <dl class="metrics reveal">
+            <div><dt>Storefronts</dt><dd>18</dd></div>
+            <div><dt>Models</dt><dd>10</dd></div>
+            <div><dt>Rates</dt><dd>45+</dd></div>
+            <div><dt>Max spread</dt><dd>14×</dd></div>
+          </dl>
+
+          <div class="problem reveal">
+            <h4>The problem</h4>
+            <p>Every reseller — Adobe Firefly, Runway, Freepik, ElevenLabs and more — prices its own credit system differently: different credit costs, clip lengths and resolution tiers, some hidden until checkout. There was no way to answer <q>what will this actually cost me?</q> without reverse-engineering a dozen pricing pages. I did that normalisation once, transparently, with the credit arithmetic visible on every rate.</p>
+          </div>
+
+          <ul class="features reveal">
+            <li><b>Three views</b> By model, by storefront, and a full heatmap grid of every rate at once.</li>
+            <li><b>Real subscription maths</b> Budget = <code>max(usage cost, plan floor × billing cycles)</code> — a 3-day project still costs a month's plan.</li>
+            <li><b>Currency-aware</b> Live USD ⇄ INR with an editable FX rate and an 18% GST toggle.</li>
+            <li><b>Benchmarked &amp; sourced</b> Markup vs. each lab's direct API, and every cheapest rate links to its source.</li>
+          </ul>
+
+          <ul class="tags reveal" aria-label="Skills shown">
+            <li>Data modelling</li><li>Financial logic</li><li>Information design</li><li>Vanilla HTML · CSS · JS</li><li>No framework, no build step</li>
+          </ul>
+
+          <div class="feature-cta reveal">
+            <a class="btn btn-gold magnetic" href="https://claude.ai/artifact/QiMfQdviSmTvzVVRqvughh" target="_blank" rel="noopener" data-cursor="Open">Open the live app <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- AWARDS -->
+    <section class="section awards" id="awards">
+      <div class="section-head">
+        <p class="eyebrow reveal"><span>04</span> Recognition</p>
+        <h2 class="h2 reveal">Awards &amp; highlights</h2>
+      </div>
+      <div class="award-bento">
+        <article class="award award-hero spot reveal">
+          <div class="award-media">
+            <img src="assets/off-camera.jpg" alt="Festival laurels won by the short film Off Camera" width="1000" height="563" loading="lazy">
+          </div>
+          <div class="award-body">
+            <p class="award-kicker">Lead 2D Animator · Short film</p>
+            <div class="award-count"><span data-count="20">0</span><sup>+</sup></div>
+            <h3>International awards for <em>Off Camera</em></h3>
+            <p>An internationally acclaimed short, recognised across 20+ film festivals worldwide.</p>
+            <a class="award-link" href="https://www.youtube.com/watch?v=YbN64-5TzZs&amp;t=1s" target="_blank" rel="noopener" data-cursor="Watch">Watch the film ↗</a>
+          </div>
+        </article>
+
+        <article class="award award-seal-card spot reveal">
+          <div class="seal" aria-hidden="true">
+            <svg viewBox="0 0 120 120" class="seal-ring">
+              <defs><path id="sealPath" d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0"/></defs>
+              <text><textPath href="#sealPath" textLength="286" lengthAdjust="spacing">STAR OF VIDEOGYAN · EXCELLENCE ·</textPath></text>
+            </svg>
+            <svg viewBox="0 0 48 48" class="seal-star"><path d="M24 4l5.6 12.2L43 18l-9.9 9.2L35.8 41 24 34.3 12.2 41l2.7-13.8L5 18l13.4-1.8z"/></svg>
+          </div>
+          <p class="award-kicker">Studio award · Videogyan</p>
+          <h3>Star of Videogyan</h3>
+          <p>Recognised for consistent creative excellence across 100+ productions.</p>
+        </article>
+
+        <article class="award award-talk spot reveal">
+          <svg class="talk-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="2.5" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M8.5 21h7"/></svg>
+          <p class="award-kicker">Guest speaker · LPU, Institute of Fine Arts</p>
+          <blockquote>“Storyboard: A Visual Representation of the Script”</blockquote>
+          <p>Invited talk for fine-arts students on turning scripts into shot-by-shot visual stories.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="section skills" id="skills">
+      <div class="section-head">
+        <p class="eyebrow reveal"><span>05</span> Expertise</p>
+        <h2 class="h2 reveal">Tools &amp; skills</h2>
+      </div>
+      <div class="skills-grid">
+        <div class="sphere-wrap reveal">
+          <div class="sphere" id="sphere" data-cursor="Spin" aria-hidden="true"></div>
+          <p class="sphere-hint">Drag to spin</p>
+        </div>
+        <div class="skill-list">
+          <details class="skill reveal" open><summary><span>🤖</span> AI production</summary><p>AI workflows · Character consistency · Visual QA · Image generation · Production pipelines</p></details>
+          <details class="skill reveal"><summary><span>🎬</span> Creative leadership</summary><p>Creative &amp; art direction · Team leadership (15+ artists) · Creative QA · Stakeholder management · Production management · Cross-functional collaboration</p></details>
+          <details class="skill reveal"><summary><span>🎞️</span> Visual storytelling</summary><p>Storyboarding · Narrative design · Cinematic framing · Character design · Thumbnail strategy · Visual communication</p></details>
+          <details class="skill reveal"><summary><span>🎨</span> Design &amp; production</summary><p>Branding · 2D animation · Post-production · UX thinking · Design systems</p></details>
+          <details class="skill reveal"><summary><span>✨</span> AI tools</summary><p>Seedance 2.0 · Seedream · Nano Banana · Midjourney · Veo · Frameo.ai · ChatGPT · Gemini</p></details>
+          <details class="skill reveal"><summary><span>🖌️</span> Design tools</summary><p>Photoshop · Illustrator · Figma · Canva · Premiere Pro · Toon Boom · Adobe Creative Suite</p></details>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section contact has-video" id="contact">
+      <!-- cinematic background video behind "Let's talk" -->
+      <div class="contact-bg" aria-hidden="true">
+        <video id="contactVideo" src="assets/hero-reel.mp4" poster="assets/hero-reel-poster.jpg" muted loop playsinline preload="metadata"></video>
+        <span class="cshade cshade-tint"></span>
+        <span class="cshade cshade-center"></span>
+        <span class="cshade cshade-sides"></span>
+        <span class="cshade cshade-edges"></span>
+      </div>
+      <p class="eyebrow reveal"><span>06</span> Get in touch</p>
+      <h2 class="contact-title reveal">Let's create<br><em>something great.</em></h2>
+      <p class="contact-note reveal">Open to freelance, collaborations and full-time creative roles.</p>
+      <div class="contact-actions reveal">
+        <a class="btn btn-primary btn-xl magnetic" href="mailto:shubhamguptartist@gmail.com" data-cursor="Write">shubhamguptartist@gmail.com</a>
+        <button class="btn btn-ghost copy" type="button" data-copy="shubhamguptartist@gmail.com">Copy email</button>
+      </div>
+      <ul class="socials reveal">
+        <li><a class="magnetic" href="https://www.linkedin.com/in/shubham-gupta-97355a14b/" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+        <li><a class="magnetic" href="https://www.behance.net/shubhamgup6969" target="_blank" rel="noopener">Behance ↗</a></li>
+        <li><a class="magnetic" href="tel:+917009430275">+91 70094 30275</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span class="logo">SG<span>.</span></span>
+    <p>© 2026 Shubham Gupta · Creative Lead &amp; AI Visual Artist · Bengaluru, India</p>
+    <p>MFA · Lovely Professional University</p>
+  </footer>
+
+  <div class="toast" role="status" aria-live="polite"></div>
+
+  <script src="ui.js" defer></script>
+  <script type="module" src="scene.js"></script>
+</body>
+</html>
